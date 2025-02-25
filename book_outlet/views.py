@@ -13,7 +13,7 @@ def index(request):
 
 
 def book_detail(request, id):
-    book = get_object_or_404(Book.objects.get(pk=id))
+    book = get_object_or_404(Book, pk=id)
     return render(request, "book_outlet/book_detail.html", {
         "title": book.title,
         "author": book.author,
