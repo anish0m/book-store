@@ -9,6 +9,9 @@ class Publication(models.Model):
     name = models.CharField(max_length=80)
     country = models.CharField(max_length=80)
 
+    def __str__(self):
+        return self.name
+
 
 class Address(models.Model):
     street = models.CharField(max_length=80)
