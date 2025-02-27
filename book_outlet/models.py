@@ -5,6 +5,10 @@ from django.utils.text import slugify
 
 # Create your models here.
 
+class Publication(models.Model):
+    name = models.CharField(max_length=80)
+    country = models.CharField(max_length=80)
+
 
 class Address(models.Model):
     street = models.CharField(max_length=80)
@@ -41,6 +45,7 @@ class Book(models.Model):
     is_bestselling = models.BooleanField(default=False)
 
     slug = models.SlugField(default="", blank=True, null=False, db_index=True)
+    published_from = models.ManyToManyField(Publication)
 
     def get_absolute_url(self):
         return reverse("book-detail", args=[self.slug])
